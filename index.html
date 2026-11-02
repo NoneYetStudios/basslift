@@ -19,11 +19,25 @@
 
         <!-- TOP RAFTERS: Banners, Jumbotron (Hall of Fame / Leaderboard), Facility Control Box (Settings) -->
         <header class="rotunda-rafters">
-          <div class="rafter-brand-plaque">
-            <span class="plaque-rivet tl"></span>
-            <span class="plaque-rivet tr"></span>
-            <span class="plaque-sub">INTERNATIONAL FEDERATION OF AQUATIC IRON</span>
-            <h1 class="plaque-title">BASS SHOPLIFTING CHAMPIONSHIP</h1>
+          <div class="rafter-brand-group">
+            <a
+              href="https://stabthefinger.com/stfarcade.html"
+              id="stf-arcade-back-btn"
+              class="stf-arcade-back-btn"
+              title="Return to STF Arcade"
+              aria-label="Return to STF Arcade"
+            >
+              <span class="stf-btn-arrow">◂</span>
+              <span class="stf-btn-icon">🕹️</span>
+              <span class="stf-btn-text">STF ARCADE</span>
+            </a>
+
+            <div class="rafter-brand-plaque">
+              <span class="plaque-rivet tl"></span>
+              <span class="plaque-rivet tr"></span>
+              <span class="plaque-sub">INTERNATIONAL FEDERATION OF AQUATIC IRON</span>
+              <h1 class="plaque-title">BASS SHOPLIFTING CHAMPIONSHIP</h1>
+            </div>
           </div>
 
           <!-- Hanging Division Banners (react to player division victories) -->
@@ -49,18 +63,8 @@
             </div>
           </button>
 
-          <!-- Interactive Facility Utility / PA Box -> Opens Settings -->
+          <!-- Interactive Facility Utility / PA Box -> Opens Settings & Audio -->
           <div class="facility-controls-cluster">
-            <button
-              type="button"
-              id="quick-mute-btn"
-              class="env-object utility-switch"
-              aria-label="Toggle Audio Mute"
-              title="Toggle Sound Effects"
-            >
-              <span id="quick-mute-icon">🔊</span>
-              <span class="switch-label">PA AUDIO</span>
-            </button>
             <button
               type="button"
               id="env-settings-btn"
@@ -72,6 +76,16 @@
                 <strong>SETTINGS</strong>
                 <small>CONTROL PANEL</small>
               </span>
+            </button>
+            <button
+              type="button"
+              id="quick-mute-btn"
+              class="env-object utility-switch"
+              aria-label="Toggle Audio Mute"
+              title="Toggle Sound Effects"
+            >
+              <span id="quick-mute-icon">🔊</span>
+              <span class="switch-label">PA AUDIO</span>
             </button>
           </div>
         </header>

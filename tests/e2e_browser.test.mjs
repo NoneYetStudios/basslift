@@ -145,9 +145,25 @@ async function runE2E() {
       const oldOvalBar = document.querySelector('.tournament-banners-bar');
       const oldOvalPills = document.querySelectorAll('.tourney-banner-pill').length;
       const deckAds = document.querySelectorAll('.deck-ad-banner').length;
+      const stfBtn = document.getElementById('stf-arcade-back-btn');
+
+      // Check stacked layout of Settings and PA Audio buttons on the right
+      const settingsBtn = document.getElementById('env-settings-btn');
+      const muteBtn = document.getElementById('quick-mute-btn');
+      const cluster = document.querySelector('.facility-controls-cluster');
+      const clusterFlexCol = cluster ? window.getComputedStyle(cluster).flexDirection === 'column' : false;
+      const settingsRect = settingsBtn ? settingsBtn.getBoundingClientRect() : null;
+      const muteRect = muteBtn ? muteBtn.getBoundingClientRect() : null;
+      const settingsAboveMute = settingsRect && muteRect ? settingsRect.top < muteRect.top : false;
+
       return {
         hasSign: Boolean(sign && !sign.hidden),
         signText: sign ? sign.innerText : '',
+        hasStfBtn: Boolean(stfBtn && !stfBtn.hidden),
+        stfHref: stfBtn ? stfBtn.getAttribute('href') : '',
+        stfText: stfBtn ? stfBtn.innerText : '',
+        clusterFlexCol,
+        settingsAboveMute,
         swimmers,
         topHalfSwimmers,
         bottomHalfSwimmers,
@@ -163,6 +179,11 @@ async function runE2E() {
     })()`);
     assert.equal(mainCheck.hasSign, true);
     assert.ok(mainCheck.signText.includes('NO FISHING'));
+    assert.equal(mainCheck.hasStfBtn, true, 'STF Arcade back button must be present in top left');
+    assert.equal(mainCheck.stfHref, 'https://stabthefinger.com/stfarcade.html', 'STF Arcade button must link to STF Arcade');
+    assert.ok(mainCheck.stfText.includes('STF ARCADE'), 'STF Arcade button text must include STF ARCADE');
+    assert.equal(mainCheck.clusterFlexCol, true, 'Facility controls cluster must be flex column (stacked)');
+    assert.equal(mainCheck.settingsAboveMute, true, 'Settings button must be stacked on top of PA Audio button');
     assert.ok(mainCheck.swimmers >= 6, 'Aquarium must have swimming fish');
     assert.ok(mainCheck.topHalfSwimmers >= 2, 'Aquarium must have fish swimming in the top half (surface / mezzanine)');
     assert.ok(mainCheck.bottomHalfSwimmers >= 2, 'Aquarium must have fish swimming in the bottom half (mid / deep trench)');

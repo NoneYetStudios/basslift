@@ -133,6 +133,11 @@ function initEventBindings() {
     navigateToView('fishing');
   });
 
+  // 2b. Return to STF Arcade Hub
+  document.getElementById('stf-arcade-back-btn')?.addEventListener('click', () => {
+    sound.playBubble();
+  });
+
   // 3. Generic [data-nav] Return / Shortcut Buttons
   document.querySelectorAll('[data-nav]').forEach((btn) => {
     btn.addEventListener('click', () => {
