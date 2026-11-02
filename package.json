@@ -1,0 +1,16 @@
+{
+  "name": "basslift",
+  "version": "1.0.0",
+  "description": "Bass Shoplifting Championship — Competitive fish weightlifting & questionable indoor aquarium decisions.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "test": "node --no-warnings tests/game_and_api.test.mjs && node --no-warnings tests/e2e_browser.test.mjs",
+    "test:unit": "node --no-warnings tests/game_and_api.test.mjs",
+    "test:e2e": "node --no-warnings tests/e2e_browser.test.mjs"
+  }
+}

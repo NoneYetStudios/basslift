@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bass Shoplifting Championship — Official Indoor Aquarium &amp; Lifting Pavilion</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#env-championship-door" class="skip-link">Skip to Championship Entrance</a>
+
+  <div id="app-shell" class="app-shell">
+    <!-- ================================================================
+         VIEW 1: MAIN ENVIRONMENT — THE TWO-STORY INDOOR AQUARIUM ROTUNDA
+         ================================================================ -->
+    <main id="view-aquarium" class="game-view active" aria-label="Grand Aquarium Rotunda and Championship Pavilion">
+      <div class="rotunda-scene">
+
+        <!-- TOP RAFTERS: Banners, Jumbotron (Hall of Fame / Leaderboard), Facility Control Box (Settings) -->
+        <header class="rotunda-rafters">
+          <div class="rafter-brand-plaque">
+            <span class="plaque-rivet tl"></span>
+            <span class="plaque-rivet tr"></span>
+            <span class="plaque-sub">INTERNATIONAL FEDERATION OF AQUATIC IRON</span>
+            <h1 class="plaque-title">BASS SHOPLIFTING CHAMPIONSHIP</h1>
+          </div>
+
+          <!-- Hanging Division Banners (react to player division victories) -->
+          <div id="rafter-banners" class="rafter-banners" aria-label="Division Championship Banners"></div>
+
+          <!-- Interactive Jumbotron Display -> Opens Hall of Fame & Global Leaderboard -->
+          <button
+            type="button"
+            id="env-jumbotron-btn"
+            class="env-object jumbotron-board"
+            aria-label="Open Hall of Fame and Global Leaderboard"
+          >
+            <span class="jumbotron-cables"></span>
+            <div class="jumbotron-frame">
+              <div class="jumbotron-header">
+                <span class="live-dot"></span>
+                <span>HALL OF FAME &amp; GLOBAL LEADERBOARD</span>
+                <span class="jumbotron-cta">VIEW BOARD ▸</span>
+              </div>
+              <div id="jumbotron-ticker" class="jumbotron-ticker">
+                LOADING OFFICIAL PAVILION RECORDS...
+              </div>
+            </div>
+          </button>
+
+          <!-- Interactive Facility Utility / PA Box -> Opens Settings -->
+          <div class="facility-controls-cluster">
+            <button
+              type="button"
+              id="quick-mute-btn"
+              class="env-object utility-switch"
+              aria-label="Toggle Audio Mute"
+              title="Toggle Sound Effects"
+            >
+              <span id="quick-mute-icon">🔊</span>
+              <span class="switch-label">PA AUDIO</span>
+            </button>
+            <button
+              type="button"
+              id="env-settings-btn"
+              class="env-object utility-panel-btn"
+              aria-label="Open Facility Settings"
+            >
+              <span class="gear-icon">⚙️</span>
+              <span class="panel-text">
+                <strong>SETTINGS</strong>
+                <small>CONTROL PANEL</small>
+              </span>
+            </button>
+          </div>
+        </header>
+
+        <!-- ================================================================
+             CENTERPIECE: ENORMOUS TWO-STORY INDOOR AQUARIUM
+             ================================================================ -->
+        <section class="aquarium-megastructure" aria-label="400,000-Gallon Two-Story Indoor Bass Aquarium">
+          <!-- Left Wall Poster: Historic World Record -->
+          <aside class="facility-poster poster-left" id="poster-record-lift" title="Click to inspect historic record">
+            <div class="poster-inner">
+              <span class="poster-pushpin">📌</span>
+              <span class="poster-kicker">HALL OF CHAMPIONS</span>
+              <h3 class="poster-title">RECORD BASS LIFT</h3>
+              <div class="poster-stat">487 LBS</div>
+              <div class="poster-hero">"BIG BERTHA" • 1998</div>
+              <p class="poster-note">Clean &amp; Jerk World Record<br/>Lifter G. McGee • Unlimited Class</p>
+              <div class="poster-tourney-line">WORLD BASSLIFTING CHAMPIONSHIPS</div>
+              <div class="poster-seal">★ IFA-IRON VERIFIED ★</div>
+            </div>
+          </aside>
+
+          <!-- Giant Glass Tank Canvas & DOM Layer -->
+          <div id="aquarium-glass" class="aquarium-glass">
+            <!-- Caustic Underwater Light Rays -->
+            <div class="caustic-rays" aria-hidden="true">
+              <span class="ray r1"></span>
+              <span class="ray r2"></span>
+              <span class="ray r3"></span>
+              <span class="ray r4"></span>
+            </div>
+
+            <!-- Deep Background Scenery (Sunken Columns, Giant Fiberglass Log, Kelp, Rocks) -->
+            <div class="tank-scenery" aria-hidden="true">
+              <div id="deep-leviathan-shadow" class="deep-leviathan-shadow"></div>
+              <svg class="tank-backdrop-svg" viewBox="0 0 1200 500" preserveAspectRatio="none">
+                <!-- Deep rock arches & sunken fiberglass log -->
+                <path d="M0 500 L0 360 Q140 310 260 390 L380 430 Q520 330 690 380 L880 340 Q1040 290 1200 370 L1200 500 Z" fill="#072235" opacity="0.75"/>
+                <!-- Sunken Showroom Log -->
+                <path d="M280 470 C360 415, 620 405, 740 455 L730 495 L265 495 Z" fill="#2c1d14" stroke="#180f0a" stroke-width="3"/>
+                <ellipse cx="280" cy="475" rx="22" ry="18" fill="#1a110b"/>
+                <!-- Sunken Commemorative Bass-Lifting Monument & Sunken Chalk Urn on Tank Floor -->
+                <g transform="translate(820, 436)">
+                  <rect x="0" y="8" width="62" height="48" rx="4" fill="#0c1d29" stroke="#1d384c" stroke-width="2.2"/>
+                  <rect x="6" y="14" width="50" height="13" fill="#152b3c"/>
+                  <text x="31" y="23" font-size="7.5" fill="#38bdf8" text-anchor="middle" font-family="'Impact', sans-serif" font-weight="bold">IFA-IRON 1998</text>
+                  <text x="31" y="44" font-size="16" text-anchor="middle">🐟</text>
+                  <circle cx="82" cy="38" r="13" fill="#0f2331" stroke="#224258" stroke-width="2"/>
+                  <rect x="78" y="21" width="8" height="6" fill="#fbbf24"/>
+                </g>
+                <!-- Underwater Kelp & Plants -->
+                <path class="kelp-strand k1" d="M110 500 Q90 410 125 330 Q145 250 115 180" stroke="#0d9488" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.65"/>
+                <path class="kelp-strand k2" d="M140 500 Q165 420 135 350 Q115 280 145 220" stroke="#14b8a6" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.55"/>
+                <path class="kelp-strand k3" d="M980 500 Q955 400 990 310 Q1015 230 980 150" stroke="#0d9488" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.65"/>
+                <path class="kelp-strand k4" d="M1020 500 Q1045 415 1010 340 Q985 265 1015 200" stroke="#10b981" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.5"/>
+                <!-- Gravel Bed -->
+                <path d="M0 475 Q300 455 600 472 T1200 468 L1200 500 L0 500 Z" fill="#0f293a"/>
+              </svg>
+            </div>
+
+            <!-- Animated Bubble Columns Layer -->
+            <div id="aquarium-bubbles" class="aquarium-bubbles" aria-hidden="true"></div>
+
+            <!-- Animated Swimming Fish Layer -->
+            <div id="aquarium-fish-stage" class="aquarium-fish-stage" aria-live="off"></div>
+
+            <!-- Steel Aquarium Window Mullions (Two-Story Grid) -->
+            <div class="aquarium-mullions" aria-hidden="true">
+              <div class="mullion-vertical mv-1"></div>
+              <div class="mullion-vertical mv-2"></div>
+              <div class="mullion-vertical mv-3"></div>
+              <div class="mullion-horizontal-floor2"></div>
+            </div>
+
+            <!-- SECOND-STORY VIEWING BALCONY / MEZZANINE CATWALK -->
+            <div class="second-story-balcony">
+              <div class="balcony-sign-left">2ND FLOOR OBSERVATION DECK</div>
+              <div class="balcony-spectators" aria-hidden="true">
+                <div class="spectator spec-1" title="Spectator admiring a muscular largemouth">
+                  <span class="spec-head"></span>
+                  <span class="spec-body"></span>
+                </div>
+                <div class="spectator spec-2">
+                  <span class="spec-head"></span>
+                  <span class="spec-body"></span>
+                </div>
+                <div class="spectator spec-3" title="Judge holding up a perfect 10.0 score card">
+                  <span class="spec-head"></span>
+                  <span class="spec-card">10.0</span>
+                </div>
+                <div class="spectator spec-4" title="Spectator waving championship bass pennant">
+                  <span class="spec-head"></span>
+                  <span class="spec-pennant">LIFT!</span>
+                </div>
+              </div>
+
+              <!-- Patrolling Security Guard on the Mezzanine / Tank Walk -->
+              <div id="aquarium-guard" class="aquarium-guard" aria-live="polite">
+                <div id="guard-speech-bubble" class="guard-speech-bubble">
+                  "Keep your hands off the glass and your fishing rods in the parking lot."
+                </div>
+                <div class="guard-sprite">
+                  <span class="guard-hat">👮</span>
+                  <span class="guard-badge">SECURITY</span>
+                </div>
+              </div>
+
+              <!-- Catwalk Railing with Integrated Observation-Deck Championship Advertisements & Pennants -->
+              <div class="balcony-railing" role="region" aria-label="Observation Deck Championship Signage">
+                <div class="balcony-ads-strip">
+                  <button type="button" class="deck-ad-banner ad-world" id="deck-ad-world" title="World Basslifting Championships Sanctioned Venue">
+                    <span class="ad-ico">🏆</span>
+                    <span class="ad-txt">WORLD BASSLIFTING CHAMPIONSHIPS</span>
+                  </button>
+                  <button type="button" class="deck-ad-banner ad-open" id="deck-ad-open" title="National Smallmouth Open Official Host">
+                    <span class="ad-ico">🥇</span>
+                    <span class="ad-txt">NATIONAL SMALLMOUTH OPEN</span>
+                  </button>
+                  <button type="button" class="deck-ad-banner ad-invitational" id="deck-ad-invitational" title="Southeastern Clean &amp; Jerk Invitational">
+                    <span class="ad-ico">🥈</span>
+                    <span class="ad-txt">SOUTHEASTERN CLEAN &amp; JERK</span>
+                  </button>
+                  <button type="button" class="deck-ad-banner ad-ifa" id="deck-ad-ifa" title="International Federation of Aquatic Iron Certified">
+                    <span class="ad-ico">🎖️</span>
+                    <span class="ad-txt">IFA-IRON SANCTIONED ARENA</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Depth Markers on Glass Frame -->
+            <div class="tank-depth-markers" aria-hidden="true">
+              <span>SURFACE — 0 FT</span>
+              <span>MEZZANINE — 12 FT</span>
+              <span>DEEP TRENCH — 28 FT</span>
+            </div>
+
+            <!-- Centered Aquarium Environmental Lore Banner Overlay -->
+            <div id="aquarium-banner-overlay" class="aquarium-banner-overlay" hidden aria-live="polite">
+              <div class="banner-overlay-backdrop" id="banner-overlay-backdrop"></div>
+              <div class="banner-overlay-card">
+                <button type="button" class="banner-overlay-close-btn" id="banner-overlay-close-btn" aria-label="Dismiss banner lore overlay">✕</button>
+                <div class="banner-overlay-kicker" id="banner-overlay-kicker">★ IFA-IRON ENVIRONMENTAL LORE ARCHIVE ★</div>
+                <div class="banner-overlay-header">
+                  <span class="banner-overlay-icon" id="banner-overlay-icon">🏆</span>
+                  <div class="banner-overlay-titles">
+                    <h3 class="banner-overlay-title" id="banner-overlay-title">WORLD BASSLIFTING CHAMPIONSHIPS</h3>
+                    <div class="banner-overlay-badge" id="banner-overlay-badge">SANCTIONED PREMIER TOURNAMENT</div>
+                  </div>
+                </div>
+                <div class="banner-overlay-content" id="banner-overlay-content"></div>
+                <div class="banner-overlay-status" id="banner-overlay-status" hidden></div>
+                <div class="banner-overlay-footer">
+                  <div class="banner-overlay-timer-track">
+                    <div class="banner-overlay-timer-bar" id="banner-overlay-timer-bar"></div>
+                  </div>
+                  <span class="banner-overlay-dismiss-tip">Environmental Lore Archive • Auto-closing in 5s (Click to dismiss)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Wall Poster: Official Competition Bass Rules -->
+          <aside class="facility-poster poster-right" id="poster-competition-rules" title="Click to inspect official rules">
+            <div class="poster-inner">
+              <span class="poster-pushpin">📌</span>
+              <span class="poster-kicker">TECHNICAL CODE 14-B</span>
+              <h3 class="poster-title">APPROVED BASS</h3>
+              <ul class="poster-rules-list">
+                <li>✓ Min. 12 lbs for Olympic Entry</li>
+                <li>✓ Natural Scales • Zero Sinker Lead</li>
+                <li>✓ Chalk Gills Thoroughly Before Hoist</li>
+                <li>✓ Slippage Counts As Technical Fault</li>
+              </ul>
+              <div class="poster-tourney-line">NAT'L OPEN &amp; SOUTHEASTERN C&amp;J</div>
+              <div class="poster-seal gold">★ OFFICIAL REGULATION ★</div>
+            </div>
+          </aside>
+        </section>
+
+        <!-- LOWER FLOOR PAVILION DECK: Environmental Navigation & The Prominent NO FISHING Sign -->
+        <section class="pavilion-floor" aria-label="Pavilion Floor Stations">
+
+          <!-- STATION 1: CHAMPIONSHIP ENTRANCE & WEIGH-IN SCALE -->
+          <div class="floor-station station-championship">
+            <button
+              type="button"
+              id="env-championship-door"
+              class="env-object championship-archway"
+              aria-label="Enter Championship Lifting Arena"
+            >
+              <div class="archway-pediment">
+                <span class="crossed-barbells">🐟 🏋️‍♂️ 🐟</span>
+                <span class="archway-title">ENTER CHAMPIONSHIP</span>
+                <span class="archway-subtitle">WORLD BASSLIFTING • NAT'L OPEN • SOUTHEASTERN C&amp;J</span>
+                <span class="archway-sanction">INTERNATIONAL FEDERATION OF AQUATIC IRON</span>
+              </div>
+              <div class="archway-portal">
+                <div class="portal-spotlight"></div>
+                <div class="portal-platform-preview">
+                  <span id="env-current-division-badge" class="division-pill">🥉 Lightweight Division</span>
+                  <span class="portal-enter-prompt">STEP ONTO THE PLATFORM ▸</span>
+                </div>
+              </div>
+            </button>
+
+            <!-- Official Weigh-In Station, Mounted Trophy Bass & Trophy Shelf -->
+            <div class="weigh-in-and-trophies">
+              <button
+                type="button"
+                id="env-weighin-scale"
+                class="env-object weigh-in-station"
+                aria-label="Official Weigh-In Scale — Click to inspect or swap active competition fish"
+              >
+                <div class="scale-dial-header">
+                  <span class="scale-tag">OFFICIAL WEIGH-IN SCALE</span>
+                  <span id="env-scale-weight" class="scale-digital-readout">21.0 LBS</span>
+                </div>
+                <div id="env-scale-fish-preview" class="scale-pan-fish"></div>
+                <div class="scale-pan-plate"></div>
+                <div id="env-scale-fish-name" class="scale-fish-caption">Clearance-Rack Smallmouth</div>
+              </button>
+
+              <!-- Mounted Championship Fish Plaque: Bass of the Year -->
+              <div class="mounted-championship-bass" id="mounted-bass-of-year" title="Click to view 2025 Grand Slab Bass of the Year">
+                <div class="mounted-bass-plaque">
+                  <span class="mounted-trophy-fish-icon">🐟</span>
+                  <div class="mounted-brass-plate">
+                    <strong class="plate-title">BASS OF THE YEAR</strong>
+                    <span class="plate-spec">2025 GRAND SLAB • 412 LBS</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="env-trophy-case" aria-label="Earned Division Trophies">
+                <div class="trophy-case-label">TROPHY CASE</div>
+                <div id="env-trophy-shelf" class="trophy-shelf-icons"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STATION 2: FISH COLLECTION & EQUIPMENT LOCKER TERMINAL -->
+          <div class="floor-station station-collection">
+            <button
+              type="button"
+              id="env-collection-kiosk"
+              class="env-object livewell-kiosk"
+              aria-label="Open Fish Collection and Equipment Locker"
+            >
+              <div class="kiosk-top-lamp"></div>
+              <div class="kiosk-header">
+                <span class="kiosk-icon">🪣</span>
+                <div>
+                  <span class="kiosk-title">FISH COLLECTION</span>
+                  <span class="kiosk-sub">&amp; ATHLETIC GEAR LOCKER</span>
+                </div>
+                <span id="env-new-fish-badge" class="new-badge hidden">NEW!</span>
+              </div>
+              <div class="kiosk-window">
+                <div class="kiosk-stat-row">
+                  <span>Owned Specimens:</span>
+                  <strong id="env-collection-count">2 Fish</strong>
+                </div>
+                <div class="kiosk-stat-row">
+                  <span>Heaviest Specimen:</span>
+                  <strong id="env-heaviest-owned">21.0 lbs</strong>
+                </div>
+                <div class="kiosk-stat-row">
+                  <span>Heaviest Lifted PR:</span>
+                  <strong id="env-heaviest-lifted">0.0 lbs</strong>
+                </div>
+              </div>
+              <div class="kiosk-footer-cta">INSPECT TANKS &amp; SELECT FISH ▸</div>
+            </button>
+          </div>
+
+          <!-- STATION 3: THE PROMINENT, CLICKABLE "NO FISHING" SIGN (Bottom-Right Area) -->
+          <div class="floor-station station-nofishing">
+            <div class="suspicion-meter-pill" title="Aquarium Security Suspicion Level">
+              <span>👀 Security Alert:</span>
+              <div class="suspicion-bar-track">
+                <div id="env-suspicion-fill" class="suspicion-bar-fill" style="width: 10%"></div>
+              </div>
+              <span id="env-suspicion-text">LOW</span>
+            </div>
+
+            <button
+              type="button"
+              id="env-no-fishing-sign"
+              class="no-fishing-sign"
+              aria-label="NO FISHING Sign — Strictly Prohibited (Click to sneakily fish in the indoor aquarium)"
+            >
+              <span class="sign-rivet tl"></span>
+              <span class="sign-rivet tr"></span>
+              <span class="sign-rivet bl"></span>
+              <span class="sign-rivet br"></span>
+
+              <div class="sign-warning-stripe">NOTICE — MANAGEMENT DIRECTIVE #402</div>
+
+              <div class="sign-main-body">
+                <div class="prohibition-emblem" aria-hidden="true">
+                  <svg viewBox="0 0 100 100" width="68" height="68">
+                    <!-- Hook & Fish Silhouette -->
+                    <path d="M52 14 L52 44 C52 56, 36 56, 36 45 C36 40, 41 37, 44 39" fill="none" stroke="#1e293b" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M22 66 C34 50, 66 50, 80 64 C66 78, 34 78, 22 66 Z" fill="#0f172a"/>
+                    <polygon points="24,66 12,55 14,77" fill="#0f172a"/>
+                    <!-- Red Prohibition Circle & Slash -->
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#dc2626" stroke-width="10"/>
+                    <line x1="20" y1="20" x2="80" y2="80" stroke="#dc2626" stroke-width="10" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="sign-copy">
+                  <span class="sign-headline">NO FISHING</span>
+                  <span class="sign-subcopy">ABSOLUTELY NO RODS, LURES, OR SUSPICIOUSLY LARGE TRENCH COATS NEAR TANK</span>
+                  <span class="sign-whisper">(...click sign when guard isn't looking)</span>
+                </div>
+              </div>
+              <span class="sign-post-mount" aria-hidden="true"></span>
+            </button>
+          </div>
+
+        </section>
+      </div>
+    </main>
+
+    <!-- ================================================================
+         VIEW 2: CHAMPIONSHIP LIFTING ARENA (All 6 Disciplines & Divisions)
+         ================================================================ -->
+    <section id="view-championship" class="game-view" aria-label="Championship Lifting Arena" hidden>
+      <div class="subview-shell">
+        <header class="subview-header">
+          <button type="button" class="back-to-aquarium-btn" data-nav="aquarium">
+            ◂ RETURN TO AQUARIUM ROTUNDA
+          </button>
+          <div class="subview-title-group">
+            <h2>CHAMPIONSHIP LIFTING ARENA</h2>
+            <p id="arena-subtitle">Select your weight class, active competition bass, and lifting discipline.</p>
+          </div>
+          <div class="header-quick-stats">
+            <span id="arena-active-fish-pill" class="stat-pill">🐟 Active Bass: --</span>
+            <span id="arena-victories-pill" class="stat-pill gold">🏆 Wins: 0</span>
+          </div>
+        </header>
+
+        <!-- Championship Setup & Division Bar -->
+        <div id="championship-lobby" class="championship-lobby">
+          <!-- Step 1: Weight Divisions -->
+          <div class="arena-panel">
+            <div class="panel-heading-row">
+              <h3>1. WEIGHT CLASS DIVISION</h3>
+              <span class="panel-hint">Score above the division target in a 3-Lift Championship Meet or single lift to advance!</span>
+            </div>
+            <div id="division-selector-grid" class="division-selector-grid" role="radiogroup" aria-label="Weight Divisions"></div>
+          </div>
+
+          <!-- Step 2: Equipped Competition Fish & Gear Summary -->
+          <div class="arena-equipment-strip">
+            <div class="equipped-fish-card">
+              <div class="equipped-card-top">
+                <span class="card-tag">PRIMARY COMPETITION BASS</span>
+                <button type="button" id="arena-change-fish-btn" class="small-action-btn">SWAP IN LOCKER ▸</button>
+              </div>
+              <div id="arena-primary-fish-slot" class="equipped-fish-slot"></div>
+            </div>
+
+            <div class="equipped-fish-card">
+              <div class="equipped-card-top">
+                <span class="card-tag">OFF-HAND BASS (FOR DUMBBELL LIFT)</span>
+                <button type="button" id="arena-cycle-secondary-btn" class="small-action-btn">CYCLE 2ND BASS ↻</button>
+              </div>
+              <div id="arena-secondary-fish-slot" class="equipped-fish-slot"></div>
+            </div>
+
+            <div class="championship-meet-banner">
+              <div class="meet-info">
+                <span class="meet-badge">🏆 FULL 3-DISCIPLINE CHAMPIONSHIP MEET</span>
+                <h4 id="meet-division-title">Lightweight Division Championship</h4>
+                <p id="meet-division-desc">Compete in Clean &amp; Jerk, Bench Press, and Overhead Press back-to-back for the division trophy!</p>
+              </div>
+              <button type="button" id="start-championship-meet-btn" class="primary-arcade-btn gold-btn">
+                START 3-LIFT CHAMPIONSHIP MEET ▸
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Individual Lifting Disciplines (6 Distinct Mechanics) -->
+          <div class="arena-panel">
+            <div class="panel-heading-row">
+              <h3>2. SELECT LIFTING DISCIPLINE (SINGLE EVENT OR RECORD ATTEMPT)</h3>
+              <span class="panel-hint">Each discipline features its own unique physical control mechanic.</span>
+            </div>
+            <div id="discipline-cards-grid" class="discipline-cards-grid"></div>
+          </div>
+        </div>
+
+        <!-- ACTIVE LIFTING PLATFORM STAGE (Shown when performing a lift) -->
+        <div id="lifting-stage-container" class="lifting-stage-container" hidden>
+          <div class="stage-top-bar">
+            <div class="stage-event-meta">
+              <span id="stage-mode-badge" class="stage-badge">OFFICIAL ATTEMPT</span>
+              <h3 id="stage-discipline-title">Clean &amp; Jerk</h3>
+              <span id="stage-division-tag" class="stage-div-tag">Lightweight Division</span>
+            </div>
+            <div id="stage-referee-lights" class="referee-lights" aria-label="Referee Decision Lights">
+              <span class="ref-light" id="ref-light-1"></span>
+              <span class="ref-light" id="ref-light-2"></span>
+              <span class="ref-light" id="ref-light-3"></span>
+            </div>
+            <button type="button" id="abort-lift-btn" class="secondary-arcade-btn">
+              ✕ STEP OFF PLATFORM
+            </button>
+          </div>
+
+          <!-- Pre-Lift Briefing (Hidden fallback container for state sync) -->
+          <div id="lift-briefing-overlay" class="lift-briefing-overlay" hidden aria-hidden="true" style="display:none;">
+            <div class="briefing-card">
+              <span id="briefing-mechanic-tag" class="mechanic-pill"></span>
+              <h4 id="briefing-title"></h4>
+              <ul id="briefing-instructions" class="briefing-list"></ul>
+              <div class="briefing-fish-summary" id="briefing-fish-summary"></div>
+            </div>
+          </div>
+
+          <!-- Main Visual Athlete + Fish Platform + Interactive Mechanic HUD -->
+          <div class="platform-arena-split">
+            <!-- Left: Illustrated Athlete Lifting the Fish -->
+            <div class="athlete-stage-box">
+              <div class="crowd-stands" aria-hidden="true">
+                <div id="stage-commentary-banner" class="stage-commentary-banner">
+                  "The lifter approaches the platform. The bass looks mildly inconvenienced."
+                </div>
+              </div>
+
+              <div id="athlete-figure-wrapper" class="athlete-figure-wrapper">
+                <!-- Dynamic SVG Athlete + Fish Barbell updated by championship.js -->
+                <div id="athlete-svg-stage" class="athlete-svg-stage"></div>
+              </div>
+
+              <div id="platform-floor-deck" class="platform-floor-deck">
+                <span>OFFICIAL IFA-IRON PLATFORM • CERTIFIED SLAB MATS • NO HOOKS</span>
+              </div>
+            </div>
+
+            <!-- Right: Discipline-Specific Interactive Controls & Gauges -->
+            <div class="mechanic-hud-box">
+              <div id="mechanic-live-status" class="mechanic-live-status">GET READY...</div>
+              <div id="mechanic-interactive-area" class="mechanic-interactive-area"></div>
+              <div id="mechanic-touch-controls" class="mechanic-touch-controls"></div>
+            </div>
+          </div>
+
+          <!-- Post-Lift Result & Global Leaderboard Submission Card -->
+          <div id="lift-result-overlay" class="lift-result-overlay" hidden>
+            <div class="result-modal-card">
+              <div id="result-lights-row" class="result-lights-row"></div>
+              <span id="result-grade-badge" class="result-grade-badge">VALID LIFT</span>
+              <h3 id="result-headline">482 PTS</h3>
+              <p id="result-commentary" class="result-commentary"></p>
+
+              <div id="result-breakdown-grid" class="result-breakdown-grid"></div>
+              <div id="result-unlocks-banner" class="result-unlocks-banner" hidden></div>
+
+              <!-- Global Leaderboard Score Submission Form -->
+              <div id="result-leaderboard-box" class="result-leaderboard-box">
+                <div class="lb-submit-row">
+                  <label for="result-nickname-input">Global Leaderboard Nickname:</label>
+                  <input
+                    type="text"
+                    id="result-nickname-input"
+                    maxlength="18"
+                    placeholder="BASS_BOSS"
+                    autocomplete="off"
+                  />
+                  <button type="button" id="submit-lift-global-btn" class="primary-arcade-btn">
+                    POST TO GLOBAL BOARD 🌐
+                  </button>
+                </div>
+                <p id="result-submit-feedback" class="submit-feedback" aria-live="polite"></p>
+              </div>
+
+              <div class="result-actions-row">
+                <button type="button" id="retry-lift-btn" class="secondary-arcade-btn">
+                  ↻ LIFT AGAIN
+                </button>
+                <button type="button" id="next-meet-event-btn" class="primary-arcade-btn gold-btn" hidden>
+                  NEXT CHAMPIONSHIP EVENT ▸
+                </button>
+                <button type="button" id="back-to-lobby-btn" class="primary-arcade-btn">
+                  BACK TO ARENA LOBBY
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         VIEW 3: FISH COLLECTION & EQUIPMENT LOCKER
+         ================================================================ -->
+    <section id="view-collection" class="game-view" aria-label="Fish Collection and Equipment Locker" hidden>
+      <div class="subview-shell">
+        <header class="subview-header">
+          <button type="button" class="back-to-aquarium-btn" data-nav="aquarium">
+            ◂ RETURN TO AQUARIUM ROTUNDA
+          </button>
+          <div class="subview-title-group">
+            <h2>FISH COLLECTION &amp; ATHLETIC GEAR LOCKER</h2>
+            <p>Select your primary competition bass, assign an off-hand dumbbell fish, and equip unlocked lifting gear.</p>
+          </div>
+          <div class="header-quick-stats">
+            <span id="collection-summary-pill" class="stat-pill">Total Fish: 2</span>
+            <span id="collection-largest-pill" class="stat-pill gold">Largest: 21.0 lbs</span>
+          </div>
+        </header>
+
+        <div class="collection-layout">
+          <!-- Left Column: Owned Fish Grid -->
+          <div class="collection-main-panel">
+            <div class="collection-toolbar">
+              <div class="filter-group" role="group" aria-label="Filter fish by rarity">
+                <button type="button" class="filter-chip active" data-rarity="all">All Fish</button>
+                <button type="button" class="filter-chip" data-rarity="common">Common</button>
+                <button type="button" class="filter-chip" data-rarity="uncommon">Uncommon</button>
+                <button type="button" class="filter-chip" data-rarity="rare">Rare</button>
+                <button type="button" class="filter-chip" data-rarity="legendary">Legendary</button>
+                <button type="button" class="filter-chip" data-rarity="ridiculous">Ridiculous</button>
+              </div>
+              <button type="button" class="sneak-fish-shortcut-btn" data-nav="fishing">
+                🎣 SNEAK TO AQUARIUM
+              </button>
+            </div>
+
+            <div id="fish-collection-grid" class="fish-collection-grid"></div>
+          </div>
+
+          <!-- Right Column: Unlockable Lifting Equipment -->
+          <aside class="gear-locker-panel">
+            <h3>UNLOCKABLE LIFTING GEAR</h3>
+            <p class="gear-sub">Equipment improves grip stability and competition score multipliers.</p>
+            <div id="gear-bonuses-summary" class="gear-bonuses-summary"></div>
+            <div id="equipment-locker-list" class="equipment-locker-list"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         VIEW 4: AQUARIUM FISHING MINIGAME (Accessed via NO FISHING sign)
+         ================================================================ -->
+    <section id="view-fishing" class="game-view" aria-label="Sneaky Indoor Aquarium Fishing" hidden>
+      <div class="subview-shell fishing-shell">
+        <header class="subview-header fishing-header">
+          <button type="button" class="back-to-aquarium-btn" data-nav="aquarium">
+            ◂ ACT NATURAL &amp; STEP AWAY FROM THE GLASS
+          </button>
+          <div class="subview-title-group">
+            <h2>UNAUTHORIZED AQUARIUM EXTRACTION</h2>
+            <p>You clicked the giant <strong>NO FISHING</strong> sign. Cast deeper for heavier, rarer bass—and watch out for Officer Barnaby!</p>
+          </div>
+          <div class="fishing-security-hud">
+            <span>👮 SECURITY SUSPICION:</span>
+            <div class="suspicion-meter-large">
+              <div id="fishing-suspicion-bar" class="suspicion-fill" style="width: 10%"></div>
+            </div>
+            <span id="fishing-suspicion-pct">10%</span>
+          </div>
+        </header>
+
+        <div class="fishing-arena-grid">
+          <!-- Left: Interactive Two-Story Tank Cross-Section -->
+          <div class="fishing-tank-viewport" id="fishing-tank-viewport">
+            <!-- Top Catwalk where Officer Barnaby Patrols -->
+            <div class="fishing-top-deck">
+              <div class="no-fishing-mini-badge">🚫 NO FISHING ZONE</div>
+              <div id="fishing-guard-patrol" class="fishing-guard-patrol">
+                <span class="guard-avatar">👮🔦</span>
+                <span id="fishing-guard-state-label" class="guard-state-tag">ON PATROL</span>
+              </div>
+              <div class="angler-rod-origin" id="angler-rod-origin">
+                <span id="angler-status-tag">🎣 YOU (IN A TRENCH COAT)</span>
+                <span id="angler-whistle-notes" class="angler-whistle-notes" hidden>🎵 🎶 😙</span>
+              </div>
+            </div>
+
+            <!-- Underwater Cross-Section with Depth Zones, Bobber/Lure, and Swimming Targets -->
+            <div class="fishing-water-column" id="fishing-water-column">
+              <!-- Animated Flashlight Beam when Officer Barnaby Inspects Tank -->
+              <div id="fishing-flashlight-cone" class="fishing-flashlight-cone" hidden></div>
+
+              <div class="depth-band band-shallow">
+                <span class="band-label">SHALLOW ZONE (12–45 LBS)</span>
+              </div>
+              <div class="depth-band band-mid">
+                <span class="band-label">MID-TANK SHOWROOM (40–170 LBS)</span>
+              </div>
+              <div class="depth-band band-deep">
+                <span class="band-label">DEEP FILTRATION TRENCH (120–1,200 LBS)</span>
+              </div>
+
+              <!-- Fishing Line SVG (Rod Tip to Surface Bobber, and Bobber down to Hook) -->
+              <svg id="fishing-line-svg" class="fishing-line-svg" viewBox="0 0 800 420" preserveAspectRatio="none">
+                <!-- Main Line from Rod Tip to Surface Bobber -->
+                <line id="fishing-line-path" x1="680" y1="0" x2="680" y2="45" stroke="#e2e8f0" stroke-width="2.5" stroke-dasharray="4 2" />
+                <!-- Submerged Leader Line from Bobber down to Hook Rig -->
+                <line id="fishing-leader-path" x1="680" y1="45" x2="680" y2="120" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="3 2" />
+              </svg>
+
+              <!-- Surface Bobber (Floats on Water Surface) -->
+              <div id="fishing-bobber" class="fishing-bobber" style="left: 82%; top: 11%">
+                <span class="bobber-ball"></span>
+                <span id="fishing-bite-ring" class="fishing-bite-ring" hidden>STRIKE!</span>
+              </div>
+
+              <!-- Submerged Hook Rig with Live Hooked Fish Graphic -->
+              <div id="fishing-hook-rig" class="fishing-hook-rig" style="left: 82%; top: 28%">
+                <div id="fishing-hook-icon" class="fishing-hook-icon">🪝</div>
+                <div id="fishing-hooked-fish" class="fishing-hooked-fish" hidden></div>
+                <div id="fishing-thrash-splash" class="fishing-thrash-splash" hidden>💦</div>
+              </div>
+
+              <!-- Swimming Target Silhouettes in the Fishing Minigame -->
+              <div id="fishing-targets-layer" class="fishing-targets-layer"></div>
+            </div>
+
+            <!-- Guard Warning Toast Banner inside Tank -->
+            <div id="fishing-guard-banner" class="fishing-guard-banner" hidden></div>
+          </div>
+
+          <!-- Right: Fishing Controls, Cast Power, Line Tension & Stealth Panel -->
+          <aside class="fishing-control-console">
+            <div id="fishing-phase-badge" class="phase-badge">STEP 1: AIM &amp; CAST</div>
+            <h3 id="fishing-status-title">Select Depth &amp; Cast Your Line</h3>
+            <p id="fishing-status-desc" class="fishing-desc">
+              Hold or tap the Cast button to charge your cast power. Aim for the Deep Filtration Trench (75%–100% power) for Legendary and Ridiculous bass!
+            </p>
+
+            <!-- Cast Power Meter -->
+            <div id="fishing-cast-box" class="fishing-meter-box">
+              <div class="meter-label-row">
+                <span>Cast Depth Power</span>
+                <strong id="cast-power-readout">0% (Shallow)</strong>
+              </div>
+              <div class="cast-bar-outer">
+                <div class="cast-zone-markers">
+                  <span style="width:38%">Shallow</span>
+                  <span style="width:34%">Mid-Tank</span>
+                  <span style="width:28%">Deep Trench</span>
+                </div>
+                <div id="cast-power-fill" class="cast-power-fill" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <!-- Reel Progress & Line Tension Meters (Visible when hooked) -->
+            <div id="fishing-reel-box" class="fishing-meter-box" hidden>
+              <div class="meter-label-row">
+                <span>🐟 Fish Landing Progress</span>
+                <strong id="reel-progress-readout">0%</strong>
+              </div>
+              <div class="progress-bar-outer">
+                <div id="reel-progress-fill" class="progress-bar-fill" style="width: 0%"></div>
+              </div>
+
+              <div class="meter-label-row" style="margin-top: 12px;">
+                <span>⚠️ Line Tension (Don't Snap!)</span>
+                <strong id="line-tension-readout">20%</strong>
+              </div>
+              <div class="tension-bar-outer">
+                <div id="line-tension-fill" class="tension-bar-fill" style="width: 20%"></div>
+              </div>
+            </div>
+
+            <!-- Primary Interactive Fishing Button(s) -->
+            <div class="fishing-buttons-stack">
+              <button type="button" id="fishing-primary-btn" class="primary-arcade-btn large-btn">
+                🎣 CAST LINE INTO AQUARIUM (SPACE / CLICK)
+              </button>
+
+              <button type="button" id="fishing-stealth-btn" class="secondary-arcade-btn stealth-btn" hidden title="Click or Hold Shift to hide rod and whistle innocently">
+                <span class="stealth-btn-icon">😗</span>
+                <span id="stealth-btn-label">WHISTLE INNOCENTLY / HIDE ROD (CLICK OR HOLD SHIFT)</span>
+              </button>
+            </div>
+
+            <!-- Recent Catches Mini Log -->
+            <div class="fishing-tips-card">
+              <h4>SHOPLIFTING FIELD NOTES</h4>
+              <ul>
+                <li><strong>Shallow (0–38%):</strong> Common &amp; Uncommon gym bass. Quick bites.</li>
+                <li><strong>Mid-Tank (39–72%):</strong> Uncommon &amp; Rare showroom specimens.</li>
+                <li><strong>Deep Trench (73–100%):</strong> Heavy Rare, Legendary &amp; Ridiculous contraband!</li>
+                <li><strong>Guard Alert:</strong> When Officer Barnaby shines his flashlight, pause reeling or hold <em>Whistle Innocently</em> so suspicion doesn't hit 100%!</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         VIEW 5: HALL OF FAME, PERSONAL RECORDS & SQLITE GLOBAL LEADERBOARD
+         ================================================================ -->
+    <section id="view-leaderboard" class="game-view" aria-label="Hall of Fame and Global Leaderboard" hidden>
+      <div class="subview-shell">
+        <header class="subview-header">
+          <button type="button" class="back-to-aquarium-btn" data-nav="aquarium">
+            ◂ RETURN TO AQUARIUM ROTUNDA
+          </button>
+          <div class="subview-title-group">
+            <h2>ROTUNDA HALL OF FAME &amp; GLOBAL LEADERBOARD</h2>
+            <p>Live SQLite global standings shared across all players, plus your local trophy room &amp; achievements.</p>
+          </div>
+          <div class="header-quick-stats">
+            <span id="lb-connection-pill" class="stat-pill">🌐 SQLite Server: Checking...</span>
+          </div>
+        </header>
+
+        <!-- Sub-navigation Tabs inside Hall of Fame -->
+        <div class="hof-tabs" role="tablist">
+          <button type="button" class="hof-tab active" data-hof-tab="global" role="tab" aria-selected="true">
+            🌐 GLOBAL LEADERBOARD (SQLITE)
+          </button>
+          <button type="button" class="hof-tab" data-hof-tab="personal" role="tab" aria-selected="false">
+            🏅 LOCAL PERSONAL RECORDS
+          </button>
+          <button type="button" class="hof-tab" data-hof-tab="achievements" role="tab" aria-selected="false">
+            🏆 HALL OF FAME &amp; ACHIEVEMENTS
+          </button>
+        </div>
+
+        <!-- TAB 1: GLOBAL LEADERBOARD (SQLITE) -->
+        <div id="hof-panel-global" class="hof-tab-panel">
+          <!-- Global Highlights Banner -->
+          <div id="global-highlights-strip" class="global-highlights-strip"></div>
+
+          <!-- Filter Bar & Post Personal Best Control -->
+          <div class="leaderboard-controls-bar">
+            <div class="lb-filter-group">
+              <label for="lb-category-select">Ranking Category:</label>
+              <select id="lb-category-select">
+                <option value="overall">Overall Competition Score</option>
+                <option value="discipline">Best Score by Lifting Discipline</option>
+                <option value="heaviest_lift">Heaviest Fish Successfully Lifted (lbs)</option>
+                <option value="largest_catch">Largest Fish Caught in Aquarium (lbs)</option>
+                <option value="victories">Total Championship Victories</option>
+              </select>
+            </div>
+
+            <div class="lb-filter-group" id="lb-discipline-filter-wrap">
+              <label for="lb-discipline-select">Discipline:</label>
+              <select id="lb-discipline-select">
+                <option value="all">All Disciplines</option>
+                <option value="clean_jerk">Clean &amp; Jerk</option>
+                <option value="snatch">Snatch</option>
+                <option value="dumbbell">Dumbbell Lift</option>
+                <option value="deadlift">Deadlift</option>
+                <option value="bench">Bench Press</option>
+                <option value="overhead">Overhead Press</option>
+              </select>
+            </div>
+
+            <div class="lb-filter-group" id="lb-division-filter-wrap">
+              <label for="lb-division-select">Division:</label>
+              <select id="lb-division-select">
+                <option value="all">All Divisions</option>
+                <option value="lightweight">Lightweight</option>
+                <option value="middleweight">Middleweight</option>
+                <option value="heavyweight">Heavyweight</option>
+                <option value="super_heavyweight">Super Heavyweight</option>
+                <option value="unlimited">Unlimited</option>
+              </select>
+            </div>
+
+            <button type="button" id="refresh-leaderboard-btn" class="secondary-arcade-btn">
+              ↻ REFRESH
+            </button>
+          </div>
+
+          <!-- Sync Local Personal Records to Global Board Bar -->
+          <div class="sync-records-bar">
+            <div class="sync-input-wrap">
+              <label for="global-nickname-input">Your Competitor Nickname:</label>
+              <input type="text" id="global-nickname-input" maxlength="18" placeholder="BASS_BOSS" />
+            </div>
+            <button type="button" id="sync-personal-records-btn" class="primary-arcade-btn">
+              ⬆️ SUBMIT MY CURRENT RECORDS TO GLOBAL BOARD
+            </button>
+            <span id="global-sync-status" class="submit-feedback" aria-live="polite"></span>
+          </div>
+
+          <!-- Global Standings Table -->
+          <div class="leaderboard-table-wrap">
+            <table class="leaderboard-table" aria-label="Global Leaderboard Rankings">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Competitor</th>
+                  <th>Score / Record</th>
+                  <th>Discipline / Category</th>
+                  <th>Division</th>
+                  <th>Fish Specimen</th>
+                  <th>Date (UTC)</th>
+                </tr>
+              </thead>
+              <tbody id="global-leaderboard-tbody">
+                <tr>
+                  <td colspan="7" class="empty-table-msg">Loading global standings...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 2: LOCAL PERSONAL RECORDS -->
+        <div id="hof-panel-personal" class="hof-tab-panel" hidden>
+          <div id="personal-records-grid" class="personal-records-grid"></div>
+        </div>
+
+        <!-- TAB 3: ACHIEVEMENTS & TROPHY HALL -->
+        <div id="hof-panel-achievements" class="hof-tab-panel" hidden>
+          <div id="achievements-grid" class="achievements-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         MODAL 1: NEW FISH CATCH REVEAL MODAL
+         ================================================================ -->
+    <div id="catch-reveal-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="catch-modal-title" hidden>
+      <div class="modal-card catch-modal-card">
+        <span id="catch-rarity-pill" class="rarity-pill">RARE SPECIMEN</span>
+        <h3 id="catch-modal-title">NEW BASS ACQUIRED!</h3>
+        <div id="catch-fish-svg-box" class="catch-fish-svg-box"></div>
+        <div class="catch-stats-row">
+          <div class="catch-stat">
+            <span>OFFICIAL WEIGHT</span>
+            <strong id="catch-weight-val">142.5 LBS</strong>
+          </div>
+          <div class="catch-stat">
+            <span>TRAIT</span>
+            <strong id="catch-trait-val">Knurled Scales</strong>
+          </div>
+        </div>
+        <p id="catch-desc-text" class="catch-desc-text"></p>
+        <div class="modal-actions">
+          <button type="button" id="catch-keep-fishing-btn" class="secondary-arcade-btn">
+            🎣 CAST AGAIN
+          </button>
+          <button type="button" id="catch-go-lift-btn" class="primary-arcade-btn gold-btn">
+            🏋️ TAKE THIS BASS TO THE PLATFORM ▸
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================
+         MODAL 2: SETTINGS & FACILITY CONTROLS
+         ================================================================ -->
+    <div id="settings-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title" hidden>
+      <div class="modal-card settings-modal-card">
+        <div class="modal-header-row">
+          <h3 id="settings-modal-title">⚙️ PAVILION FACILITY SETTINGS</h3>
+          <button type="button" id="close-settings-btn" class="icon-close-btn" aria-label="Close Settings">✕</button>
+        </div>
+
+        <div class="settings-form">
+          <div class="setting-row">
+            <label for="settings-nickname">Default Competitor Nickname</label>
+            <input type="text" id="settings-nickname" maxlength="18" placeholder="BASS_BOSS" />
+          </div>
+
+          <div class="setting-row">
+            <label for="settings-mute-toggle">Mute All Audio</label>
+            <input type="checkbox" id="settings-mute-toggle" />
+          </div>
+
+          <div class="setting-row">
+            <label for="settings-volume-slider">Master Sound Volume</label>
+            <input type="range" id="settings-volume-slider" min="0" max="100" value="75" />
+          </div>
+
+          <div class="setting-row">
+            <label for="settings-reduced-motion">Reduced Motion (Calmer Aquarium &amp; UI)</label>
+            <input type="checkbox" id="settings-reduced-motion" />
+          </div>
+
+          <hr class="settings-divider" />
+
+          <div class="setting-row danger-row">
+            <div>
+              <strong>Reset Local Career Progress</strong>
+              <small>Clears local fish collection and local records (Global SQLite Leaderboard is unaffected).</small>
+            </div>
+            <button type="button" id="reset-local-save-btn" class="danger-btn">RESET LOCAL SAVE</button>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="save-settings-btn" class="primary-arcade-btn">SAVE &amp; RETURN</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER (Achievements, Guard Alerts, Unlocks) -->
+    <div id="toast-stack" class="toast-stack" aria-live="polite"></div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
