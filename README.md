@@ -53,3 +53,10 @@ npm test
 
 ### Apache / PHP Shared Hosting Compatibility
 In addition to `server.js` (`node:sqlite`), the repository includes `.htaccess` and `api/index.php` (PDO SQLite) implementing the identical `/api/health` and `/api/leaderboard` endpoints for Apache/LiteSpeed deployments.
+
+
+---
+
+## License
+
+MIT License © 2026 Anthony Moore / None Yet Studios
