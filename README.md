@@ -3,6 +3,8 @@
 **Weigh increasingly ridiculous bass and compete in absurd lifting championships.**
 *There's also a giant, two-story indoor aquarium. What you do with that information is entirely up to you.*
 
+Built with **Google Antigravity** · Play it live: [basslift.stabthefinger.com](https://basslift.stabthefinger.com) · Part of the [STF Arcade](https://stabthefinger.com/stfarcade.html)
+
 ---
 
 ## Overview
